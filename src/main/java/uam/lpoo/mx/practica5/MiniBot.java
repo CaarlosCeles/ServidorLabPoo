@@ -45,6 +45,40 @@ public class MiniBot implements Serializable{
     public void setConsulta(Consulta consulta) {
         this.consulta = consulta;
     }
+
+    /**
+    * Metodo que identifica los signos de puntuación y los vacía 
+    */
+
+    public String eliminarSignosDePuntuacion(String texto) {
+        String signosDePuntuacion = ",.!¡!¿?()";
+        
+        StringBuilder textoSinPuntuacion = new StringBuilder();
+        for (char c : texto.toCharArray()) {
+            if (signosDePuntuacion.indexOf(c) == -1) {
+                textoSinPuntuacion.append(c);
+            }
+        }
+        
+        return textoSinPuntuacion.toString();
+    }
+
+
+    public int contarSignosDePuntuacion(String texto) {
+        // Definimos los signos de puntuación a contar
+        String signosDePuntuacion = ",.!¡!¿?()";
+        int contador = 0;
+
+        // Iteramos sobre cada carácter del texto
+        for (char c : texto.toCharArray()) {
+            // Si el carácter es un signo de puntuación, incrementamos el contador
+            if (signosDePuntuacion.indexOf(c) != -1) {
+                contador++;
+            }
+        }
+
+        return contador;
+    }
     /**
      * Metodo que identifica las plabras vacias y las vacía
      * @return cadena con las palabras vacias
